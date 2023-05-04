@@ -19,8 +19,9 @@ clean: ## clean something
 
 post: ## post something
 	@echo "Posting a new blog post"
+	hugo new posts/$(POST_NAME).md
 	make POST_NAME=who-are-we POST_TITLE="Who are we"
-	sed 's/string_to_replace/replacement_string/g' ./content/posts/who-are-we.md 
+	sed 's/string_to_replace/replacement_string/g' ./content/posts/$(POST_NAME).md 
 
 
 
