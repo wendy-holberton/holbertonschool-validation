@@ -20,7 +20,7 @@ clean: ## clean something
 post: ## post something
 	@echo "Posting a new blog post"
 	hugo new posts/$(POST_NAME).md
-	sed -i "s/title: "$(POST_NAME)"/title: "$(POST_TITLE)"/g" ./content/posts/$(POST_NAME).md 
+	sed -i '' -e '2s/.*/title: "$(POST_TITLE)"/' content/posts/$(POST_NAME).md
 
 
 
