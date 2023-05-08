@@ -1,53 +1,42 @@
-.DEFAULT_GOAL:= help
+package main
 
-##@ Build
-.PHONY: build
+import (
+	"fmt"
+	"io"
+	"log"
+	"net/http"
+	"os"
 
-build: ## compile the source code of the application to a binary named awesome-api 
-	@echo "build"
-	go build
+	"github.com/gorilla/mux"
+)
 
-##@ Run
-.PHONY: run
+func main() {
+	httpAddr := "0.0.0.0:9999"
+	if port := os.Getenv("PORT"); port != "" {
+		httpAddr = "0.0.0.0:" + port
+	}
+	fmt.Println("HTTP Server listening on", httpAddr)
 
-run: ## Run the application in background by executing the binary awesome-api
-	@echo "run"
-	./awesome-api > ./awesome-api.log 2>&1 &
+	// Start an HTTP server using the custom router
+	log.Fatal(http.ListenAndServe(httpAddr, setupRouter()))
+}
 
-##@ Stop
-.PHONY: stop
+func setupRouter() *mux.Router {
+	// Create a new empty HTTP Router
+	r := mux.NewRouter()
 
-stop: ## Stop the application with the command kill XXXXX where XXXXX is the Process ID of the application
-	@echo "stop"
-	kill "$(pgrep awesome-api)"
+	// When an HTTP GET request is received on the path /health, delegates to the function "HealthCheckHandler()"
+	r.HandleFunc("/health", HealthCheckHandler).Methods("GET")
 
-##@ Clean
-.PHONY: clean
+	return r
+}
 
-clean: ## Delete the binary and the log file 
-	@echo "clean"
-	kill "$(pgrep awesome-api)"
-	rm awesome-api awesome-api.log
-	
+func HealthCheckHandler(w http.ResponseWriter, r *http.Request) {
+	// Print a line in the logs
+	fmt.Println("HIT: healthcheck")
 
-##@ Test
-.PHONY: test
+	// Write the string "ALIVE" into the response's body
+	io.WriteString(w, "ALIVE")
 
-test: ##  test it to ensure that it behaves as expected
-	@echo "test"
-	curl http://localhost:9999
-
-##@ Help
-.PHONY: help
-
-help: ## help something
-	@awk '/^[^ .\t].*:/ { \
-		target=$$1; \
-		split($$0,desc,"##"); \
-		if ($$2) { \
-			printf "%s%s\n", target, desc[2]; \
-		} \
-	}' $(MAKEFILE_LIST)
-
- 	
-
+	// End of the function: return HTTP 200 by default
+}
