@@ -18,6 +18,7 @@ Deployment: In this phase, the project team deploys the project to the productio
 
 Maintenance: In this phase, the project team maintains the project and ensures that it continues to work as intended. The team may fix bugs, add new features, or perform updates to the project during this phase.
 
+make lint
 make build
 make run
 make stop
