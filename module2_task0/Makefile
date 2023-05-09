@@ -35,6 +35,7 @@ clean: ## Delete the binary and the log file
 test: ##  test it to ensure that it behaves as expected
 	@echo "test"
 	curl http://localhost:9999
+	curl http://localhost:9999/health
 
 ##@ Help
 .PHONY: help
