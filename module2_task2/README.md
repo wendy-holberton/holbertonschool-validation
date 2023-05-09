@@ -25,3 +25,4 @@ make stop
 make test
 make clean
 make help
+make unit-tests
