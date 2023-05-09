@@ -5,7 +5,7 @@
 
 build: ## compile the source code of the application to a binary named awesome-api 
 	@echo "build"
-	go build
+	go build -o awesome-api
 
 ##@ Run
 .PHONY: run
@@ -19,15 +19,14 @@ run: ## Run the application in background by executing the binary awesome-api
 
 stop: ## Stop the application with the command kill XXXXX where XXXXX is the Process ID of the application
 	@echo "stop"
-	kill "$(pgrep awesome-api)"
+	kill $$(pgrep awesome-api)
 
 ##@ Clean
 .PHONY: clean
 
 clean: ## Delete the binary and the log file 
 	@echo "clean"
-	kill "$(pgrep awesome-api)"
-	rm awesome-api awesome-api.log
+	rm -rf awesome-api awesome-api.log
 	
 
 ##@ Test
