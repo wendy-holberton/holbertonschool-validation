@@ -27,6 +27,7 @@ unit-tests: ## unit-tests should be implemented and should execute (successfully
 
 integration-tests: ## Add a new target to execute the Integration tests
 	@echo "integration-tests"
+	@echo "skipping Unit Tests"
 	go test -v -run Integration -coverprofile=coverage-integrations.out
 
 help: ## help something
