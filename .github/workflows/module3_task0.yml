@@ -9,13 +9,11 @@ on:  # yamllint disable-line rule:truthy
     - cron: '0 0 * * *'  # Run at midnight UTC
 
 jobs:
-  build:
+  first_job:
     runs-on: ubuntu-22.04
-
     steps:
       - name: Clone the repository
         uses: actions/checkout@v2
-
       - name: Execute make help
         run: |
           cd workflows
