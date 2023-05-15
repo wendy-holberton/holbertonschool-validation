@@ -16,5 +16,5 @@ jobs:
         uses: actions/checkout@v2
       - name: Execute make help
         run: |
-          cd workflows
+          cd module2_task3
           make help
