@@ -16,8 +16,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Install missing tools
         run: |
-          cd module2_task3
+          cd module3_task1
+          chmod +x setup.sh
+          ./setup.sh
+          cd ../module2_task3
           make build
-          # chmod +x setup.sh
-          # ./setup.sh
+          
 
