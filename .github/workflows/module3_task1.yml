@@ -19,11 +19,10 @@ jobs:
           cd module3_task1
           chmod +x setup.sh
           ./setup.sh
-          make lint
-          make clean
           make build
+          make clean
           make run
-          make stop
+          make post POST_NAME=Hi
           make help
           
 

@@ -1,34 +1,35 @@
-lint: ## lint should be implemented and should fail when the linter catches and error
-	@echo "lint"
-	golangci-lint run 
+.DEFAULT_GOAL:= help
 
-build: lint ## compile the source code of the application to a binary named awesome-api 
-	@echo "build"
-	go build -o awesome-api
+##@ Build
+.PHONY: build
+
+build: ## build something
+	@echo "Building the website"
+	hugo
+
+##@ Clean
+.PHONY: clean
+
+clean: ## clean something really clean
+	@echo "Cleaning the content of the directory dist/"
+	rm -r dist/*
+
+##@ Run
+.PHONY: run
 
 run: ## Run the application in background by executing the binary awesome-api
 	@echo "run"
 	./awesome-api > ./awesome-api.log 2>&1 &
 
-stop: ## Stop the application with the command kill XXXXX where XXXXX is the Process ID of the application
-	@echo "stop"
-	kill $$(pgrep awesome-api) || true
+##@ Post
+.PHONY: post
 
-clean: stop ## Delete the binary and the log file 
-	@echo "clean"
-	rm -rf awesome-api awesome-api.log coverage-units.out coverage-integrations.out
-
-test: unit-tests integration-tests ##  test it to ensure that it behaves as expected
-	@echo "test"
-
-unit-tests: ## unit-tests should be implemented and should execute (successfully) the Golang unit tests
-	@echo "unit-tests"
-	go test -v -short -coverprofile=coverage-units.out
-
-integration-tests: ## Add a new target to execute the Integration tests
-	@echo "integration-tests"
-	@echo "skipping Unit Tests"
-	go test -v -run Integration -coverprofile=coverage-integrations.out
+post: ## post something
+	@echo "Posting a new blog post"
+	hugo new posts/$(POST_NAME).md 
+			
+##@ Help
+.PHONY: help
 
 help: ## help something
 	@awk '/^[^ .\t].*:/ { \
@@ -38,6 +39,4 @@ help: ## help something
 			printf "%s%s\n", target, desc[2]; \
 		} \
 	}' $(MAKEFILE_LIST)
-
- 	
 
