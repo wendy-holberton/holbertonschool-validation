@@ -5,14 +5,14 @@ on:  # yamllint disable-line rule:truthy
   push:
     branches:
       - main
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   container_test_job:
     runs-on: ubuntu-22.04
-    container:
-      image: ubuntu:22.04
     steps:
-      - name: Checkout code
+      - name: Checkout the code
         uses: actions/checkout@v2
       - name: Install missing tools
         run: |
