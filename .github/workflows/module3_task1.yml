@@ -19,6 +19,7 @@ jobs:
           cd module3_task1
           chmod +x setup.sh
           ./setup.sh
+          ln -s .github/workflows/module3_task1.yml github-workflow.yml
           make lint
           make clean
           make build
