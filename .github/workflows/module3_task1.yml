@@ -18,7 +18,7 @@ jobs:
         run: |
           cd module3_task1
           chmod +x setup.sh
-          ./setup.sh
+          sudo ./setup.sh
           make build
           make clean
           make run
