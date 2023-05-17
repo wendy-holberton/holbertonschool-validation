@@ -19,7 +19,6 @@ jobs:
           cd module3_task1
           chmod +x setup.sh
           ./setup.sh
-          cd ../module2_task3
           make lint
           make clean
           make build
