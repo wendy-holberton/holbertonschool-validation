@@ -23,7 +23,8 @@ jobs:
           make lint
           make clean
           make build
+          make run
+          make stop
           make help
-          make post
           
 
