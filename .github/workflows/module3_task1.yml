@@ -25,17 +25,17 @@ jobs:
           make build
       - name: clean
         run: |
-          cd module3_task1 
+          cd module3_task1
           make clean
       - name: run
         run: |
-          cd module3_task1 
+          cd module3_task1
           make run
       - name: post
-        run: | 
+        run: |
           cd module3_task1
           make post POST_NAME=Hi
       - name: help
-        run: | 
+        run: |
           cd module3_task1
           make help
