@@ -24,12 +24,18 @@ jobs:
           cd module3_task1
           make build
       - name: clean
-        run: make clean
+        run: |
+          cd module3_task1 
+          make clean
       - name: run
-        run: make run
+        run: |
+          cd module3_task1 
+          make run
       - name: post
-        run: make post POST_NAME=Hi
+        run: | 
+          cd module3_task1
+          make post POST_NAME=Hi
       - name: help
-        run: make help
-      - name: package
-        run: make package
+        run: | 
+          cd module3_task1
+          make help
