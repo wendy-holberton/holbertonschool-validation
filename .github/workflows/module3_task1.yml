@@ -19,10 +19,13 @@ jobs:
           cd module3_task1
           chmod +x setup.sh
           sudo ./setup.sh
-          make build
-          make clean
-          make run
-          make post POST_NAME=Hi
-          make help
-          
-
+      - name: build
+        run: make build
+      - name: clean
+        run: make clean
+      - name: run
+        run: make run
+      - name: post
+        run: make post POST_NAME=Hi
+      - name: help
+        run: make help
