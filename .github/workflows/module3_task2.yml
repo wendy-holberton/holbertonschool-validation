@@ -25,11 +25,11 @@ jobs:
           make build
       - name: clean
         run: |
-          cd module3_task2 
+          cd module3_task2
           make clean
       - name: run
         run: |
-          cd module3_task2 
+          cd module3_task2
           make run
       - name: help
         run: |
@@ -43,5 +43,5 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main' }}
         uses: actions/upload-artifact@v3
         with:
-            name: zip
-            path: module3_task2/awesome-website.zip
+          name: zip
+          path: module3_task2/awesome-website.zip
