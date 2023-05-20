@@ -31,10 +31,6 @@ jobs:
         run: |
           cd module3_task2 
           make run
-      - name: post
-        run: | 
-          cd module3_task2
-          make post POST_NAME=Hi
       - name: help
         run: |
           cd module3_task2
