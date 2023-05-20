@@ -50,4 +50,4 @@ jobs:
             name: zip
             path: |
               cd odule3_task2
-              awesome-website.zip
+              /awesome-website.zip
