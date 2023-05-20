@@ -47,10 +47,14 @@ package: ## produces a file containing the binary and directory
 	cp awesome-api dist/
 	zip -r awesome-website.zip dist/
 
+##@ Lint
 .PHONY: lint
 
 lint: ## lint the files
 	markdownlint -f README.md DEPLOY.md  || true
 
+##@ Unit-tests
 .PHONY: unit-tests
+
+unit-tests: ## make unit-tests
 	@echo "unit-tests"
