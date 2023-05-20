@@ -49,5 +49,4 @@ jobs:
         with:
             name: zip
             path: |
-              cd odule3_task2
-              /awesome-website.zip
+              cd module3_task2/awesome-website.zip
