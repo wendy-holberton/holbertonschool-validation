@@ -64,3 +64,9 @@ unit-tests: ## make unit-tests
 
 integration-tests: ## make integration-tests
 	@echo "integration-tests"
+
+##@ Validate
+.PHONY: validate
+
+validate: ## make validate
+	@echo: "validate"
