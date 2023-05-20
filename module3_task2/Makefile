@@ -49,5 +49,5 @@ package: ## produces a file containing the binary and directory
 
 .PHONY: lint
 
-lint: README.md DEPLOY.md
-  markdownlint $^ 
+lint: ## lint the files
+  markdownlint README.md DEPLOY.md
