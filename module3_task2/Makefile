@@ -58,3 +58,9 @@ lint: ## lint the files
 
 unit-tests: ## make unit-tests
 	@echo "unit-tests"
+
+##@ Integration-tests
+.PHONY: integration-tests
+
+integration-tests: ## make integration-tests
+	@echo "integration-tests"
