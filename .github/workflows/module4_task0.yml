@@ -23,10 +23,6 @@ jobs:
         run: |
           cd module4_task0
           make build
-      - name: clean
-        run: |
-          cd module4_task0
-          make clean
       - name: run
         run: |
           cd module4_task0
