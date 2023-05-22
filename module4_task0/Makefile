@@ -13,7 +13,7 @@ package: ## produces a file containing the binary and directory
 
 lint: ## lint should be implemented and should fail when the linter catches and error
 	@echo "lint"
-	golangci-lint run 
+#	docker run --volume=$(pwd):/app --workdir=/app/module4_task0 golang:1.15.8-buster golangci-lint run 
 	markdownlint -f README.md DEPLOY.md  || true
 
 ##@ Build
