@@ -3,7 +3,7 @@
 ##@ Package
 .PHONY: package
 
-package: ## produces a file containing the binary and directory
+package: build ## produces a file containing the binary and directory
 	mkdir -p dist
 	cp awesome-api dist/
 	zip -r awesome-website.zip dist/
