@@ -7,6 +7,9 @@ on:  # yamllint disable-line rule:truthy
       - main
   schedule:
     - cron: '0 0 * * *'
+  pull_request:
+    branches:
+      - main
 
 jobs:
   container_test_job:
