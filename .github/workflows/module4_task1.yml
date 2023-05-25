@@ -48,9 +48,12 @@ jobs:
         with:
           name: zip
           path: module4_task0/awesome-website.zip
-      - name: tests
+      - name: unit tests
         run: |
           cd module4_task1
           make unit-tests
-          make integration-tests || true
+      - name: integration tests
+        run: |
+          cd module4_task1
+          make integration-tests
       
