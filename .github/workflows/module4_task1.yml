@@ -1,0 +1,50 @@
+---
+name: module4_task1
+
+on:  # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * *'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  container_test_job:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Install missing tools
+        run: |
+          cd module4_task1
+          chmod +x setup.sh
+          sudo ./setup.sh
+      - name: build
+        run: |
+          cd module4_task1
+          make build
+      - name: run
+        run: |
+          cd module4_task1
+          make run
+      - name: help
+        run: |
+          cd module4_task1
+          make help
+      - name: package
+        run: |
+          cd module4_task1
+          make package
+      - name: lint
+        run: |
+          cd module4_task1
+          make lint
+      - name: Archive production artifacts
+        if: ${{ github.ref == 'refs/heads/main' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: zip
+          path: module4_task0/awesome-website.zip
